@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>text on dhaninugraha</title>
+    <link>https://dhaninugraha.net/tags/text/</link>
+    <description>Recent content in text on dhaninugraha</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2020 Nugraha Nandiwardhana</copyright>
+    <lastBuildDate>Tue, 07 Jan 2020 09:51:38 +0700</lastBuildDate>
+    
+	<atom:link href="https://dhaninugraha.net/tags/text/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Diff and Patch</title>
+      <link>https://dhaninugraha.net/posts/diff-and-patch/</link>
+      <pubDate>Tue, 07 Jan 2020 09:51:38 +0700</pubDate>
+      
+      <guid>https://dhaninugraha.net/posts/diff-and-patch/</guid>
+      <description>Every now and then, we&#39;d be faced in situations where we&#39;re being asked to replace, keep or examine two different files &amp;ndash; such as when a new Ubuntu package we&#39;re upgrading issues a new config file.
+It&#39;s easy when we know to keep the old one or replace it altogether with the newer version, but what do we do when we&#39;re unsure and/or need to reconcile the difference between them? diff and patch comes to mind.</description>
+    </item>
+    
+  </channel>
+</rss>

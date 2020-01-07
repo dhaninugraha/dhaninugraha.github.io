@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Diff and Patch - dhaninugraha</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Diff and Patch" />
+<meta property="og:description" content="Every now and then, we&#39;d be faced in situations where we&#39;re being asked to replace, keep or examine two different files &ndash; such as when a new Ubuntu package we&#39;re upgrading issues a new config file.
+It&#39;s easy when we know to keep the old one or replace it altogether with the newer version, but what do we do when we&#39;re unsure and/or need to reconcile the difference between them? diff and patch comes to mind." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dhaninugraha.net/posts/diff-and-patch/" />
+<meta property="article:published_time" content="2020-01-07T09:51:38+07:00" />
+<meta property="article:modified_time" content="2020-01-07T09:51:38+07:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Diff and Patch"/>
+<meta name="twitter:description" content="Every now and then, we&#39;d be faced in situations where we&#39;re being asked to replace, keep or examine two different files &ndash; such as when a new Ubuntu package we&#39;re upgrading issues a new config file.
+It&#39;s easy when we know to keep the old one or replace it altogether with the newer version, but what do we do when we&#39;re unsure and/or need to reconcile the difference between them? diff and patch comes to mind."/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="https://dhaninugraha.net/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://dhaninugraha.net/css/main.css" /><link rel="stylesheet" type="text/css" href="https://dhaninugraha.net/css/dark.css"  />
+
+	<script src="https://dhaninugraha.net/js/feather.min.js"></script>
+	
+	<script src="https://dhaninugraha.net/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title"><a href="https://dhaninugraha.net/">dhaninugraha</a></h1>
+	<div class="site-description"><h2>Just a bunch of random musings.</h2><nav class="nav social">
+			<ul class="flat"><a href="https://github.com/dhaninugraha" title="Github"><i data-feather="github"></i></a><a href="https://twitter.com/dhaninugraha" title="Twitter"><i data-feather="twitter"></i></a></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">Posts</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post-header">
+			<h1 class="title">Diff and Patch</h1>
+			<div class="meta">Posted at &mdash; Jan 7, 2020</div>
+		</div>
+
+		<div class="markdown">
+			<p>Every now and then, we'd be faced in situations where we're being asked to replace, keep or examine two different files &ndash; such as when a new Ubuntu package we're upgrading issues a new config file.</p>
+<p>It's easy when we know to keep the old one or replace it altogether with the newer version, but what do we do when we're unsure and/or need to reconcile the difference between them? <code>diff</code> and <code>patch</code> comes to mind.</p>
+<p>Let <code>old.conf</code> be the older version of a config file that contains 4 config keys:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">~ cat old.conf
+some_config_key = &#34;some config value&#34;
+another_config_key = &#34;another config value&#34;
+omg_another_config_key = &#34;much wow&#34;
+more_config_key = &#34;yeet!&#34;
+</code></pre></div><p>And <code>new.conf</code> is the spankin&rsquo; brand new version &ndash; still has 4 config keys, but one of them is unlike the older version:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">~ cat new.conf
+some_config_key = &#34;some config value&#34;
+another_config_key = &#34;another config value&#34;
+new_config_key = &#34;foo bar baz&#34;
+more_config_key = &#34;yeet!&#34;
+</code></pre></div><p>Running <code>diff -u old.conf new.conf</code> gives us:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">--- old.conf	2020-01-07 00:00:00.000000000 +0700
++++ new.conf	2020-01-07 00:00:30.000000000 +0700
+@@ -1,4 +1,4 @@
+ some_config_key = &#34;some config value&#34;
+ another_config_key = &#34;another config value&#34;
+-omg_another_config_key = &#34;much wow&#34;
++new_config_key = &#34;foo bar baz&#34;
+ more_config_key = &#34;yeet!&#34;
+</code></pre></div><p>If we were to generate a &ldquo;patch file&rdquo; from the above output (<code>diff -u old.conf new.conf &gt; old.patch</code>) and patch <code>old.conf</code> with it (<code>patch old.conf old.patch</code>), then <code>old.conf</code> will become:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">some_config_key = &#34;some config value&#34;
+another_config_key = &#34;another config value&#34;
+new_config_key = &#34;foo bar baz&#34;
+more_config_key = &#34;yeet!&#34;
+</code></pre></div><p>What gives?
+Well, look at these two important lines in the patch file:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">-omg_another_config_key = &#34;much wow&#34;
++new_config_key = &#34;foo bar baz&#34;
+</code></pre></div><p>The <code>-</code> prefix means that the line will be removed, and <code>+</code> means that everything following it will be added in the place of what was removed before it.</p>
+<p>Let's say we want to keep both lines, so that <code>old.conf</code> has a total of 5 config keys:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">some_config_key = &#34;some config value&#34;
+another_config_key = &#34;another config value&#34;
+omg_another_config_key = &#34;much wow&#34;
+new_config_key = &#34;foo bar baz&#34;
+more_config_key = &#34;yeet!&#34;
+</code></pre></div><p>Is it possible? Well, yes. Very much so.</p>
+<p>Generate a patch file by <code>diff</code>ing the two files like we did before: <code>diff -u old.conf new.conf &gt; old.patch</code></p>
+<p>Open <code>old.patch</code> in a text editor:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">--- old.conf	2020-01-07 00:00:00.000000000 +0700
++++ new.conf	2020-01-07 00:00:30.000000000 +0700
+@@ -1,4 +1,4 @@
+ some_config_key = &#34;some config value&#34;
+ another_config_key = &#34;another config value&#34;
+-omg_another_config_key = &#34;much wow&#34;
++new_config_key = &#34;foo bar baz&#34;
+ more_config_key = &#34;yeet!&#34;
+</code></pre></div><p>Remove the <code>-</code> prefix in front of <code>omg_another_config_key</code> so that it becomes:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">--- old.conf	2020-01-07 00:00:00.000000000 +0700
++++ new.conf	2020-01-07 00:00:30.000000000 +0700
+@@ -1,4 +1,4 @@
+ some_config_key = &#34;some config value&#34;
+ another_config_key = &#34;another config value&#34;
+ omg_another_config_key = &#34;much wow&#34;
++new_config_key = &#34;foo bar baz&#34;
+ more_config_key = &#34;yeet!&#34;
+</code></pre></div><p>Then change the part that says</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@@ -1,4 +1,4 @@
+</code></pre></div><p>to</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@@ -1,4 +1,5 @@
+</code></pre></div><p>to signify that the patched file will be 5 lines long, as opposed to the old one that is 4 lines long.</p>
+<p>The whole thing should now read:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">--- old.conf	2020-01-07 00:00:00.000000000 +0700
++++ new.conf	2020-01-07 00:00:30.000000000 +0700
+@@ -1,4 +1,5 @@
+ some_config_key = &#34;some config value&#34;
+ another_config_key = &#34;another config value&#34;
+ omg_another_config_key = &#34;much wow&#34;
++new_config_key = &#34;foo bar baz&#34;
+ more_config_key = &#34;yeet!&#34;
+</code></pre></div><p>Save the file, apply it as a patch to the old file: <code>patch old.conf old.patch</code>, then witness the magic:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">~ cat old.conf
+some_config_key = &#34;some config value&#34;
+another_config_key = &#34;another config value&#34;
+omg_another_config_key = &#34;much wow&#34;
+new_config_key = &#34;foo bar baz&#34;
+more_config_key = &#34;yeet!&#34;
+</code></pre></div><p>Do remember that it's always a good idea &ndash; if not imperative &ndash; that you backup the old file before patching it. In case, you know, things got messed up :)</p>
+
+		</div>
+
+		<div class="post-tags">
+			
+				
+					<nav class="nav tags">
+							<ul class="flat">
+								
+								<li><a href="/tags/unix">unix</a></li>
+								
+								<li><a href="/tags/shell">shell</a></li>
+								
+								<li><a href="/tags/text">text</a></li>
+								
+								<li><a href="/tags/config">config</a></li>
+								
+							</ul>
+					</nav>
+				
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> © 2020 Nugraha Nandiwardhana |  <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+
+<script>feather.replace()</script>
+</body>
+</html>
