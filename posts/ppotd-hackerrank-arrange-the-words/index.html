@@ -170,11 +170,11 @@ expression <code>^[A-Z][a-z ]*\.$</code></li>
 	<span style="color:#2aa198">&#34;strings&#34;</span>
 )
 
-<span style="color:#268bd2">type</span> sArr []<span style="color:#dc322f">string</span>
+<span style="color:#268bd2">type</span> strArr []<span style="color:#dc322f">string</span>
 
-<span style="color:#268bd2">func</span> (s sArr) <span style="color:#268bd2">Len</span>() <span style="color:#dc322f">int</span>           { <span style="color:#719e07">return</span> <span style="color:#b58900">len</span>(s) }
-<span style="color:#268bd2">func</span> (s sArr) <span style="color:#268bd2">Less</span>(i, j <span style="color:#dc322f">int</span>) <span style="color:#dc322f">bool</span> { <span style="color:#719e07">return</span> <span style="color:#b58900">len</span>(s[i]) &lt; <span style="color:#b58900">len</span>(s[j]) }
-<span style="color:#268bd2">func</span> (s sArr) <span style="color:#268bd2">Swap</span>(i, j <span style="color:#dc322f">int</span>)      { s[i], s[j] = s[j], s[i] }
+<span style="color:#268bd2">func</span> (s strArr) <span style="color:#268bd2">Len</span>() <span style="color:#dc322f">int</span>           { <span style="color:#719e07">return</span> <span style="color:#b58900">len</span>(s) }
+<span style="color:#268bd2">func</span> (s strArr) <span style="color:#268bd2">Less</span>(i, j <span style="color:#dc322f">int</span>) <span style="color:#dc322f">bool</span> { <span style="color:#719e07">return</span> <span style="color:#b58900">len</span>(s[i]) &lt; <span style="color:#b58900">len</span>(s[j]) }
+<span style="color:#268bd2">func</span> (s strArr) <span style="color:#268bd2">Swap</span>(i, j <span style="color:#dc322f">int</span>)      { s[i], s[j] = s[j], s[i] }
 
 <span style="color:#268bd2">func</span> <span style="color:#268bd2">arrange</span>(sentence <span style="color:#dc322f">string</span>) <span style="color:#dc322f">string</span> {
 	<span style="color:#268bd2">var</span> words strArr
