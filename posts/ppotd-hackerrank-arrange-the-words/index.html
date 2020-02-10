@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Arrange the Words - dhaninugraha</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Arrange the Words" />
+<meta property="og:description" content="Welcome to the first post in the Programming Puzzle of the Day (aka PPotD) series!
+I came across this challenge on HackerRank, as part of a developer candidate test from a company that shall remain nameless ;)
+My submission passed all of the automated test cases, but I remember it as being so sloppily written that I thought I&#39;d rewrite it just for the hell of it. Later on, I rewrote the whole thing in Golang, also just for the hell of it &ndash; because why not?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dhaninugraha.net/posts/ppotd-hackerrank-arrange-the-words/" />
+<meta property="article:published_time" content="2020-02-10T14:39:50+07:00" />
+<meta property="article:modified_time" content="2020-02-10T14:39:50+07:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Arrange the Words"/>
+<meta name="twitter:description" content="Welcome to the first post in the Programming Puzzle of the Day (aka PPotD) series!
+I came across this challenge on HackerRank, as part of a developer candidate test from a company that shall remain nameless ;)
+My submission passed all of the automated test cases, but I remember it as being so sloppily written that I thought I&#39;d rewrite it just for the hell of it. Later on, I rewrote the whole thing in Golang, also just for the hell of it &ndash; because why not?"/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="https://dhaninugraha.net/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://dhaninugraha.net/css/main.css" /><link rel="stylesheet" type="text/css" href="https://dhaninugraha.net/css/dark.css"  />
+
+	<script src="https://dhaninugraha.net/js/feather.min.js"></script>
+	
+	<script src="https://dhaninugraha.net/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title"><a href="https://dhaninugraha.net/">dhaninugraha</a></h1>
+	<div class="site-description"><h2>Just a bunch of random musings.</h2><nav class="nav social">
+			<ul class="flat"><a href="https://github.com/dhaninugraha" title="Github"><i data-feather="github"></i></a><a href="https://twitter.com/dhaninugraha" title="Twitter"><i data-feather="twitter"></i></a></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">Posts</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post-header">
+			<h1 class="title">Arrange the Words</h1>
+			<div class="meta">Posted at &mdash; Feb 10, 2020</div>
+		</div>
+
+		<div class="markdown">
+			<p>Welcome to the first post in the Programming Puzzle of the Day (aka PPotD) series!</p>
+<p>I came across this challenge on HackerRank, as part of a developer candidate test from a company that shall remain nameless ;)</p>
+<p>My submission passed all of the automated test cases, but I remember it as being so sloppily written that I thought I'd rewrite it just for the hell of it. Later on, I rewrote the whole thing in Golang, also just for the hell of it &ndash; because why not?</p>
+<h2 id="the-problem">The Problem</h2>
+<p>We define a <em>sentence</em> to be a string of space-separated words that starts with a capital letter followed by lowercase letters and spaces, and ends with a period, i.e., it satisfies the regular expression <code>^[A-Z][a-z]*\.$</code>. We want to rearrange the words in a <em>sentence</em> such that the following conditions are satisfied:</p>
+<ol>
+<li>Each word is ordered by length, ascending.</li>
+<li>Words of equal length must appear in the same order as in the
+original sentence.</li>
+<li>The rearranged <em>sentence</em> must be formatted to satisfy the regular
+expression <code>^[A-Z][a-z ]*\.$</code></li>
+</ol>
+<p>For example, consider the sentence <em>Cats and hats</em>. First the words are ordered by length, maintaining original order for ties: <em>[and, cats, hats]</em>. Now reassemble the sentence, applying formatting: <em>And cats hats</em>.</p>
+<h3 id="function-description">Function Description</h3>
+<p>Complete the function <em>arrange</em> in the editor below. The function must return a properly formed sentence arranged as described.</p>
+<p>arrange has the following parameter(s):</p>
+<p>    <em>sentence</em>: a well formed sentence string</p>
+<h3 id="constraints">Constraints</h3>
+<ul>
+<li><em>1 ≤ | sentence | &lt; 10<sup style="line-height: 0; font-size: 75%;">5</sup></em></li>
+</ul>
+<h3 id="input-format-for-custom-testing">Input Format for Custom Testing</h3>
+<p>Input from stdin will be processed as follows and passed to the function.</p>
+<p>A single line of space-separated words denoting <em>sentence</em>.</p>
+<h3 id="sample-case-0">Sample Case 0</h3>
+<h4 id="sample-input-0">Sample Input 0</h4>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">The lines are printed in reverse order.
+</code></pre></div><h4 id="sample-output-0">Sample Output 0</h4>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">In the are lines order printed reverse.
+</code></pre></div><h4 id="explanation-0">Explanation 0</h4>
+<p>We organize the strings of each respective length in <em>sentence</em> = <em>The lines are printed in reverse order.</em> as:</p>
+<ul>
+<li><em>Length 2: {in}</em></li>
+<li><em>Length 3: {the, are}</em></li>
+<li><em>Length 5: {lines, order}</em></li>
+<li><em>Length 7: {printed, reverse}</em></li>
+</ul>
+<p>We then reassemble our sequences of words as a <em>sentence</em> string, ensuring that the first letter is uppercase, the intermediate letters are lowercase, and the string terminates with a period. We return <em>In the are lines order printed reverse.</em> as our answer.</p>
+<h3 id="sample-case-1">Sample Case 1</h3>
+<h4 id="sample-input-1">Sample Input 1</h4>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Here i come.
+</code></pre></div><h4 id="sample-output-1">Sample Output 1</h4>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">I here come.
+</code></pre></div><h4 id="explanation-1">Explanation 1</h4>
+<p>We organize the strings of each respective length in <em>sentence</em> = <em>Here i come.</em> as:</p>
+<ul>
+<li><em>Length 1: {i}</em></li>
+<li><em>Length 4: {here, come}</em></li>
+</ul>
+<p>We then reassemble and format our sentence as: <em>I here come.</em>.</p>
+<h3 id="sample-case-2">Sample Case 2</h3>
+<h4 id="sample-input-2">Sample Input 2</h4>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">I love to code.
+</code></pre></div><h4 id="sample-output-2">Sample Output 2</h4>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">I to love code.
+</code></pre></div><h4 id="explanation-2">Explanation 2</h4>
+<p>We organize the strings of each respective length in <em>sentence</em> = <em>I love to code.</em> as:</p>
+<ul>
+<li><em>Length 1: {i}</em></li>
+<li><em>Length 2: {to}</em></li>
+<li><em>Length 4: {love, code}</em></li>
+</ul>
+<p>We then reassemble and format our sentence as: <em>I to love code.</em>.</p>
+<h2 id="the-solution">The Solution</h2>
+<h3 id="python-3">Python 3</h3>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#719e07">def</span> <span style="color:#268bd2">arrange</span>(sentence):
+    <span style="color:#719e07">import</span> re
+    
+    sentence_rgx <span style="color:#719e07">=</span> re<span style="color:#719e07">.</span>compile(<span style="color:#2aa198">r</span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">^[A-Z][a-z ]*</span><span style="color:#2aa198">\</span><span style="color:#2aa198">.$</span><span style="color:#2aa198">&#39;</span>)
+
+    <span style="color:#586e75"># satisfy constraints</span>
+    _sentence <span style="color:#719e07">=</span> <span style="color:#b58900">str</span>(sentence)
+    <span style="color:#719e07">assert</span> <span style="color:#b58900">len</span>(_sentence) <span style="color:#719e07">&gt;</span><span style="color:#719e07">=</span> <span style="color:#2aa198">1</span> <span style="color:#719e07">and</span> <span style="color:#b58900">len</span>(_sentence) <span style="color:#719e07">&lt;</span><span style="color:#719e07">=</span> <span style="color:#2aa198">10</span><span style="color:#719e07">*</span><span style="color:#719e07">*</span><span style="color:#2aa198">5</span>
+    <span style="color:#719e07">assert</span> re<span style="color:#719e07">.</span>match(sentence_rgx, _sentence)
+
+    <span style="color:#586e75"># split the sentence into a list of words, then</span>
+    <span style="color:#586e75"># decapitalize each word, remove full stop and</span>
+    <span style="color:#586e75"># strip excess whitespace in between words</span>
+    words <span style="color:#719e07">=</span> [
+        word<span style="color:#719e07">.</span>lower()[<span style="color:#2aa198">0</span>:<span style="color:#b58900">len</span>(word)<span style="color:#719e07">-</span><span style="color:#2aa198">1</span>] <span style="color:#719e07">if</span> word[<span style="color:#719e07">-</span><span style="color:#2aa198">1</span>] <span style="color:#719e07">==</span> <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">.</span><span style="color:#2aa198">&#39;</span> <span style="color:#719e07">else</span> word<span style="color:#719e07">.</span>lower()
+        <span style="color:#719e07">for</span> word <span style="color:#719e07">in</span> re<span style="color:#719e07">.</span>sub(<span style="color:#2aa198">r</span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">[ ]+</span><span style="color:#2aa198">&#39;</span>, <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198"> </span><span style="color:#2aa198">&#39;</span>, _sentence)<span style="color:#719e07">.</span>split(<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198"> </span><span style="color:#2aa198">&#39;</span>)
+    ]
+
+    <span style="color:#586e75"># sort by length of words - note that by default Python</span>
+    <span style="color:#586e75"># implements Timsort, and therefore is stable (ie. order</span>
+    <span style="color:#586e75"># of pre-sorted words are retained)</span>
+    words<span style="color:#719e07">.</span>sort(key<span style="color:#719e07">=</span><span style="color:#b58900">len</span>)
+
+    <span style="color:#586e75"># capitalize first word and add full stop to last word</span>
+    words[<span style="color:#2aa198">0</span>] <span style="color:#719e07">=</span> f<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">{words[0][0].upper()}{words[0][1:]}</span><span style="color:#2aa198">&#39;</span>
+    words[<span style="color:#719e07">-</span><span style="color:#2aa198">1</span>] <span style="color:#719e07">=</span> f<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">{words[-1]}.</span><span style="color:#2aa198">&#39;</span>
+    
+    <span style="color:#586e75"># join words into a sentence, then do</span>
+    <span style="color:#586e75"># one last sanity check</span>
+    arranged <span style="color:#719e07">=</span> <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198"> </span><span style="color:#2aa198">&#39;</span><span style="color:#719e07">.</span>join(words)
+    <span style="color:#719e07">assert</span> re<span style="color:#719e07">.</span>match(sentence_rgx, arranged)
+
+    <span style="color:#719e07">return</span> arranged
+</code></pre></div><h3 id="golang">Golang</h3>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#719e07">package</span> main
+
+<span style="color:#719e07">import</span> (
+	<span style="color:#2aa198">&#34;fmt&#34;</span>
+	<span style="color:#2aa198">&#34;math&#34;</span>
+	<span style="color:#2aa198">&#34;regexp&#34;</span>
+	<span style="color:#2aa198">&#34;sort&#34;</span>
+	<span style="color:#2aa198">&#34;strings&#34;</span>
+)
+
+<span style="color:#268bd2">type</span> sArr []<span style="color:#dc322f">string</span>
+
+<span style="color:#268bd2">func</span> (s sArr) <span style="color:#268bd2">Len</span>() <span style="color:#dc322f">int</span>           { <span style="color:#719e07">return</span> <span style="color:#b58900">len</span>(s) }
+<span style="color:#268bd2">func</span> (s sArr) <span style="color:#268bd2">Less</span>(i, j <span style="color:#dc322f">int</span>) <span style="color:#dc322f">bool</span> { <span style="color:#719e07">return</span> <span style="color:#b58900">len</span>(s[i]) &lt; <span style="color:#b58900">len</span>(s[j]) }
+<span style="color:#268bd2">func</span> (s sArr) <span style="color:#268bd2">Swap</span>(i, j <span style="color:#dc322f">int</span>)      { s[i], s[j] = s[j], s[i] }
+
+<span style="color:#268bd2">func</span> <span style="color:#268bd2">arrange</span>(sentence <span style="color:#dc322f">string</span>) <span style="color:#dc322f">string</span> {
+	<span style="color:#268bd2">var</span> words strArr
+	<span style="color:#268bd2">var</span> arranged <span style="color:#dc322f">string</span>
+	sentenceRgx <span style="color:#719e07">:=</span> regexp.<span style="color:#268bd2">MustCompile</span>(<span style="color:#2aa198">&#34;^[A-Z][a-z ]*\\.$&#34;</span>)
+
+	<span style="color:#586e75">// satisfy constraints
+</span><span style="color:#586e75"></span>	<span style="color:#719e07">if</span> <span style="color:#b58900">len</span>(sentence) &lt; <span style="color:#2aa198">1</span> <span style="color:#719e07">||</span> <span style="color:#b58900">len</span>(sentence) &gt; <span style="color:#b58900">int</span>(math.<span style="color:#268bd2">Pow10</span>(<span style="color:#2aa198">5</span>)) {
+		<span style="color:#b58900">panic</span>(<span style="color:#2aa198">&#34;Invalid sentence length&#34;</span>)
+	}
+	<span style="color:#719e07">if</span> !sentenceRgx.<span style="color:#268bd2">MatchString</span>(sentence) {
+		<span style="color:#b58900">panic</span>(<span style="color:#2aa198">&#34;Invalid input sentence&#34;</span>)
+	}
+
+	<span style="color:#586e75">// split sentence into a slice of words -- strings.Fields() takes care
+</span><span style="color:#586e75"></span>	<span style="color:#586e75">// of the excess whitespace in between words
+</span><span style="color:#586e75"></span>	words = strings.<span style="color:#268bd2">Fields</span>(sentence)
+
+	<span style="color:#586e75">// decapitalize each word and remove full stop
+</span><span style="color:#586e75"></span>	<span style="color:#719e07">for</span> i, word <span style="color:#719e07">:=</span> <span style="color:#719e07">range</span> words {
+		words[i] = strings.<span style="color:#268bd2">ToLower</span>(word)
+
+		<span style="color:#719e07">if</span> strings.<span style="color:#268bd2">LastIndex</span>(words[i], <span style="color:#2aa198">&#34;.&#34;</span>) <span style="color:#719e07">==</span> <span style="color:#b58900">len</span>(words[i])<span style="color:#719e07">-</span><span style="color:#2aa198">1</span> {
+			words[i] = words[i][<span style="color:#2aa198">0</span> : <span style="color:#b58900">len</span>(words[i])<span style="color:#719e07">-</span><span style="color:#2aa198">1</span>]
+		}
+	}
+
+	<span style="color:#586e75">// this is where the magic happens
+</span><span style="color:#586e75"></span>	sort.<span style="color:#268bd2">Stable</span>(words)
+
+	<span style="color:#586e75">// capitalize first word
+</span><span style="color:#586e75"></span>	words[<span style="color:#2aa198">0</span>] = <span style="color:#268bd2">func</span>(w <span style="color:#dc322f">string</span>) <span style="color:#dc322f">string</span> {
+		split <span style="color:#719e07">:=</span> strings.<span style="color:#268bd2">Split</span>(w, <span style="color:#2aa198">&#34;&#34;</span>)
+		split[<span style="color:#2aa198">0</span>] = strings.<span style="color:#268bd2">ToUpper</span>(split[<span style="color:#2aa198">0</span>])
+		<span style="color:#719e07">return</span> strings.<span style="color:#268bd2">Join</span>(split, <span style="color:#2aa198">&#34;&#34;</span>)
+	}(words[<span style="color:#2aa198">0</span>])
+
+	<span style="color:#586e75">// append full stop to last word
+</span><span style="color:#586e75"></span>	words[<span style="color:#b58900">len</span>(words)<span style="color:#719e07">-</span><span style="color:#2aa198">1</span>] = fmt.<span style="color:#268bd2">Sprintf</span>(<span style="color:#2aa198">&#34;%s.&#34;</span>, words[<span style="color:#b58900">len</span>(words)<span style="color:#719e07">-</span><span style="color:#2aa198">1</span>])
+
+	<span style="color:#586e75">// join words into sentence
+</span><span style="color:#586e75"></span>	arranged = strings.<span style="color:#268bd2">Join</span>(words, <span style="color:#2aa198">&#34; &#34;</span>)
+
+	<span style="color:#586e75">// final sanity check
+</span><span style="color:#586e75"></span>	<span style="color:#719e07">if</span> !sentenceRgx.<span style="color:#268bd2">MatchString</span>(arranged) {
+		<span style="color:#b58900">panic</span>(<span style="color:#2aa198">&#34;Invalid output sentence&#34;</span>)
+	}
+
+	<span style="color:#719e07">return</span> arranged
+}
+</code></pre></div>
+		</div>
+
+		<div class="post-tags">
+			
+				
+					<nav class="nav tags">
+							<ul class="flat">
+								
+								<li><a href="/tags/ppotd">ppotd</a></li>
+								
+								<li><a href="/tags/hackerrank">hackerrank</a></li>
+								
+								<li><a href="/tags/algorithm">algorithm</a></li>
+								
+								<li><a href="/tags/python">python</a></li>
+								
+								<li><a href="/tags/golang">golang</a></li>
+								
+							</ul>
+					</nav>
+				
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> © 2020 Nugraha Nandiwardhana |  <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+
+<script>feather.replace()</script>
+</body>
+</html>

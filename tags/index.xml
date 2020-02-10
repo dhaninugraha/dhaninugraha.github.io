@@ -7,10 +7,55 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© 2020 Nugraha Nandiwardhana</copyright>
-    <lastBuildDate>Tue, 07 Jan 2020 09:51:38 +0700</lastBuildDate>
+    <lastBuildDate>Mon, 10 Feb 2020 14:39:50 +0700</lastBuildDate>
     
 	<atom:link href="https://dhaninugraha.net/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>algorithm</title>
+      <link>https://dhaninugraha.net/tags/algorithm/</link>
+      <pubDate>Mon, 10 Feb 2020 14:39:50 +0700</pubDate>
+      
+      <guid>https://dhaninugraha.net/tags/algorithm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>https://dhaninugraha.net/tags/golang/</link>
+      <pubDate>Mon, 10 Feb 2020 14:39:50 +0700</pubDate>
+      
+      <guid>https://dhaninugraha.net/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hackerrank</title>
+      <link>https://dhaninugraha.net/tags/hackerrank/</link>
+      <pubDate>Mon, 10 Feb 2020 14:39:50 +0700</pubDate>
+      
+      <guid>https://dhaninugraha.net/tags/hackerrank/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ppotd</title>
+      <link>https://dhaninugraha.net/tags/ppotd/</link>
+      <pubDate>Mon, 10 Feb 2020 14:39:50 +0700</pubDate>
+      
+      <guid>https://dhaninugraha.net/tags/ppotd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://dhaninugraha.net/tags/python/</link>
+      <pubDate>Mon, 10 Feb 2020 14:39:50 +0700</pubDate>
+      
+      <guid>https://dhaninugraha.net/tags/python/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>config</title>

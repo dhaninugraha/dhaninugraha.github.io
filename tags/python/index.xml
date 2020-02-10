@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on dhaninugraha</title>
-    <link>https://dhaninugraha.net/posts/</link>
-    <description>Recent content in Posts on dhaninugraha</description>
+    <title>python on dhaninugraha</title>
+    <link>https://dhaninugraha.net/tags/python/</link>
+    <description>Recent content in python on dhaninugraha</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© 2020 Nugraha Nandiwardhana</copyright>
     <lastBuildDate>Mon, 10 Feb 2020 14:39:50 +0700</lastBuildDate>
     
-	<atom:link href="https://dhaninugraha.net/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dhaninugraha.net/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -21,16 +21,6 @@
       <description>Welcome to the first post in the Programming Puzzle of the Day (aka PPotD) series!
 I came across this challenge on HackerRank, as part of a developer candidate test from a company that shall remain nameless ;)
 My submission passed all of the automated test cases, but I remember it as being so sloppily written that I thought I&#39;d rewrite it just for the hell of it. Later on, I rewrote the whole thing in Golang, also just for the hell of it &amp;ndash; because why not?</description>
-    </item>
-    
-    <item>
-      <title>Diff and Patch</title>
-      <link>https://dhaninugraha.net/posts/diff-and-patch/</link>
-      <pubDate>Tue, 07 Jan 2020 09:51:38 +0700</pubDate>
-      
-      <guid>https://dhaninugraha.net/posts/diff-and-patch/</guid>
-      <description>Every now and then, we&#39;d face situations where we&#39;re being asked to replace, keep or examine two different files &amp;ndash; such as when a new Ubuntu package comes with a new config file.
-It&#39;s easy when we know whether to keep the old one or replace it altogether with the newer version, but what do we do when we&#39;re unsure and/or need to reconcile the difference between them? diff and patch comes to mind.</description>
     </item>
     
   </channel>

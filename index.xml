@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© 2020 Nugraha Nandiwardhana</copyright>
-    <lastBuildDate>Tue, 07 Jan 2020 09:51:38 +0700</lastBuildDate>
+    <lastBuildDate>Mon, 10 Feb 2020 14:39:50 +0700</lastBuildDate>
     
 	<atom:link href="https://dhaninugraha.net/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Arrange the Words</title>
+      <link>https://dhaninugraha.net/posts/ppotd-hackerrank-arrange-the-words/</link>
+      <pubDate>Mon, 10 Feb 2020 14:39:50 +0700</pubDate>
+      
+      <guid>https://dhaninugraha.net/posts/ppotd-hackerrank-arrange-the-words/</guid>
+      <description>Welcome to the first post in the Programming Puzzle of the Day (aka PPotD) series!
+I came across this challenge on HackerRank, as part of a developer candidate test from a company that shall remain nameless ;)
+My submission passed all of the automated test cases, but I remember it as being so sloppily written that I thought I&#39;d rewrite it just for the hell of it. Later on, I rewrote the whole thing in Golang, also just for the hell of it &amp;ndash; because why not?</description>
+    </item>
     
     <item>
       <title>Diff and Patch</title>
